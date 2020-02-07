@@ -1,8 +1,8 @@
 <template>
-  <VApp :class="[{ '-dark': ui.darkMode }]">
+  <div :class="[{ '-dark': ui.darkMode }]">
     <RouterView />
     <Loading v-if="ui.hasGlobalLoadingQueue" />
-  </VApp>
+  </div>
 </template>
 
 <script lang="ts">
