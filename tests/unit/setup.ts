@@ -1,6 +1,6 @@
 import { config } from '@vue/test-utils'
 
-config.logModifiedComponents = false
+// config.logModifiedComponents = false
 
 /**
  * Polyfill - Array.prototype.flat
