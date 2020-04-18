@@ -1,15 +1,44 @@
-# Boilerplate Vuex Dev
+# Vue Web Dev Boilerplate
 
-TypeScript Vue + Vuex のボイラープレートです。
+TypeScript Vue + Vuex を使ったウェブサイト開発環境のボイラープレートです。
 
-## Installation
+## development
 
 ```bash
 npm ci
+npm run serve
 ```
 
-## npm run-script
+## build
 
-`npm run serve` でローカルサーバーが起動します。
+```bash
+npm run build
+```
 
-`npm run build` でビルドします。
+## test
+
+```bash
+npm run test:unit
+```
+
+Jest でユニットテストを実行します。スナップショットを更新するには
+
+```bash
+npm run test:unit -- -u
+```
+
+を実行してください。
+
+## lint
+
+```bash
+npm run lint
+```
+
+自動フォーマットするには
+
+```bash
+npm run lint -- --fix
+```
+
+を実行してください。
