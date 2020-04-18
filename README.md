@@ -5,6 +5,11 @@ TypeScript Vue + Vuex を使ったウェブサイト開発環境のボイラー�
 ## development
 
 ```bash
+ndenv install 12.16.1
+ndenv rehash
+```
+
+```bash
 npm ci
 npm run serve
 ```
