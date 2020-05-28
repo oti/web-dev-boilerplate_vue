@@ -1,17 +1,25 @@
-import { UiActionTree } from '@/store/modules/ui/models'
+import { RootState } from '@/store/models'
+import {
+  UiActionPayloads as ThisActionPayloads,
+  UiState as ThisState
+} from './models'
 import {
   DECREMENT_GLOBAL_LOADING_QUEUE,
   INCREMENT_GLOBAL_LOADING_QUEUE,
   TOGGLE_DARK_MODE
-} from '@/store/modules/ui/mutation-types'
+} from './mutation-types'
+import { ActionTree } from 'vuex'
 
-export const actions: UiActionTree = {
+export const actions: ActionTree<ThisState, RootState> = {
   /**
    * グローバルのローディングキューを減少させる
    * @param commit
    * @param length
    */
-  decrementGlobalLoadingQueue({ commit }, length?) {
+  decrementGlobalLoadingQueue(
+    { commit },
+    length?: ThisActionPayloads['decrementGlobalLoadingQueue']
+  ) {
     commit(DECREMENT_GLOBAL_LOADING_QUEUE, length)
   },
 
@@ -20,7 +28,10 @@ export const actions: UiActionTree = {
    * @param commit
    * @param length
    */
-  incrementGlobalLoadingQueue({ commit }, length?) {
+  incrementGlobalLoadingQueue(
+    { commit },
+    length?: ThisActionPayloads['incrementGlobalLoadingQueue']
+  ) {
     commit(INCREMENT_GLOBAL_LOADING_QUEUE, length)
   },
 
