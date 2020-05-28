@@ -1,40 +1,38 @@
-import { DefinedActionTree, VuexActionDispatchers } from '@/store/models'
+import {
+  VuexActionPayloads,
+  VuexActions,
+  VuexMutationPayloads
+} from '@/models/Vuex'
 import {
   DECREMENT_GLOBAL_LOADING_QUEUE,
   INCREMENT_GLOBAL_LOADING_QUEUE,
   TOGGLE_DARK_MODE
-} from '@/store/modules/ui/mutation-types'
+} from './mutation-types'
 
 export interface UiState {
-  darkMode: boolean
+  dark: boolean
   globalLadingQueue: number
 }
 
 export interface UiViewModel extends UiState {
-  hasGlobalLoadingQueue: UiGetterReturns['hasGlobalLoadingQueue']
+  hasGlobalLoadingQueue: UiGetters['hasGlobalLoadingQueue']
 }
 
-export interface UiGetterReturns {
+export interface UiGetters {
   hasGlobalLoadingQueue: boolean
   viewModel: UiViewModel
 }
 
-export interface UiMutationPayloads {
+export type UiMutationPayloads = VuexMutationPayloads<{
   [DECREMENT_GLOBAL_LOADING_QUEUE]: number | undefined
   [INCREMENT_GLOBAL_LOADING_QUEUE]: number | undefined
   [TOGGLE_DARK_MODE]: boolean
-}
+}>
 
-export interface UiActionPayloads {
-  decrementGlobalLoadingQueue: UiMutationPayloads[typeof DECREMENT_GLOBAL_LOADING_QUEUE]
-  incrementGlobalLoadingQueue: UiMutationPayloads[typeof INCREMENT_GLOBAL_LOADING_QUEUE]
-  toggleDarkMode: UiMutationPayloads[typeof TOGGLE_DARK_MODE]
-}
+export type UiActionPayloads = VuexActionPayloads<{
+  decrementGlobalLoadingQueue: number | undefined
+  incrementGlobalLoadingQueue: number | undefined
+  toggleDarkMode: boolean
+}>
 
-export type UiActionTree = DefinedActionTree<UiState, UiActionPayloads>
-
-export type UiActionDispatchers = VuexActionDispatchers<
-  UiActionTree,
-  UiState,
-  UiActionPayloads
->
+export type UiActions = VuexActions<UiActionPayloads>

@@ -1,5 +1,5 @@
 <template>
-  <div :class="[{ '-dark': ui.darkMode }]">
+  <div :class="[{ '-dark': ui.dark }]">
     <RouterView />
     <Loading v-if="ui.hasGlobalLoadingQueue" />
   </div>
@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import Loading from '@/components/Loading.vue'
-import { UiActionDispatchers, UiViewModel } from '@/store/modules/ui/models'
+import { UiActionPayloads, UiViewModel } from '@/store/modules/ui/models'
 import { Component, Vue } from 'vue-property-decorator'
 import { Action, Getter } from 'vuex-class'
 
@@ -26,9 +26,9 @@ export default class App extends Vue {
    * アクションを引き当てる
    */
   @Action('ui/decrementGlobalLoadingQueue')
-  decrementGlobalLoadingQueue!: UiActionDispatchers['decrementGlobalLoadingQueue']
+  decrementGlobalLoadingQueue!: UiActionPayloads['decrementGlobalLoadingQueue']
   @Action('ui/incrementGlobalLoadingQueue')
-  incrementGlobalLoadingQueue!: UiActionDispatchers['incrementGlobalLoadingQueue']
+  incrementGlobalLoadingQueue!: UiActionPayloads['incrementGlobalLoadingQueue']
 
   /**
    * @lifecycles

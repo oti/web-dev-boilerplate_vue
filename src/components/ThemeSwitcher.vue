@@ -2,7 +2,7 @@
   <div class="ThemeSwitcher">
     <input
       id="ThemeSwitcherInput"
-      v-model="ui.darkMode"
+      v-model="ui.dark"
       class="__input"
       type="checkbox"
       name="darkMode"
@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts">
-import { UiActionDispatchers, UiViewModel } from '@/store/modules/ui/models'
+import { UiActionPayloads, UiViewModel } from '@/store/modules/ui/models'
 import { Component, Vue } from 'vue-property-decorator'
 import { Action, Getter } from 'vuex-class'
 
@@ -30,7 +30,7 @@ export default class ThemeSwitcher extends Vue {
    * アクションを引き当てる
    */
   @Action('ui/toggleDarkMode')
-  toggleDarkMode!: UiActionDispatchers['toggleDarkMode']
+  toggleDarkMode!: UiActionPayloads['toggleDarkMode']
 }
 </script>
 

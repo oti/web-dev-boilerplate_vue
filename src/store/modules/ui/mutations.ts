@@ -1,18 +1,24 @@
-import { DefinedMutationTree } from '@/store/models'
-import { UiMutationPayloads, UiState } from '@/store/modules/ui/models'
+import {
+  UiMutationPayloads as ThisMutationPayloads,
+  UiState as ThisState
+} from './models'
 import {
   DECREMENT_GLOBAL_LOADING_QUEUE,
   INCREMENT_GLOBAL_LOADING_QUEUE,
   TOGGLE_DARK_MODE
-} from '@/store/modules/ui/mutation-types'
+} from './mutation-types'
+import { MutationTree } from 'vuex'
 
-export const mutations: DefinedMutationTree<UiState, UiMutationPayloads> = {
+export const mutations: MutationTree<ThisState> = {
   /**
    * グローバルのローディングキューを減少させる
    * @param state
    * @param length
    */
-  [DECREMENT_GLOBAL_LOADING_QUEUE](state, length = 1) {
+  [DECREMENT_GLOBAL_LOADING_QUEUE](
+    state,
+    length: ThisMutationPayloads[typeof DECREMENT_GLOBAL_LOADING_QUEUE] = 1
+  ) {
     if (length <= 0) {
       return
     }
@@ -28,7 +34,10 @@ export const mutations: DefinedMutationTree<UiState, UiMutationPayloads> = {
    * @param state
    * @param length
    */
-  [INCREMENT_GLOBAL_LOADING_QUEUE](state, length = 1) {
+  [INCREMENT_GLOBAL_LOADING_QUEUE](
+    state,
+    length: ThisMutationPayloads[typeof INCREMENT_GLOBAL_LOADING_QUEUE] = 1
+  ) {
     if (length <= 0) {
       return
     }
@@ -41,6 +50,6 @@ export const mutations: DefinedMutationTree<UiState, UiMutationPayloads> = {
    * @param state
    */
   [TOGGLE_DARK_MODE](state) {
-    state.darkMode = !state.darkMode
+    state.dark = !state.dark
   }
 }
