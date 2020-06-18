@@ -1,7 +1,9 @@
 {
+  "private": true,
   "name": "boilerplate_vuex-dev",
   "version": "2.1.0",
-  "private": true,
+  "description": "web development env boilerplate with Vue.js",
+  "license": "MIT",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -52,12 +54,8 @@
     "pre-commit": "lint-staged"
   },
   "lint-staged": {
-    "*.js": [
-      "vue-cli-service lint",
-      "git add"
-    ],
-    "*.vue": [
-      "vue-cli-service lint",
+    "*": [
+      "vue-cli-service lint --fix",
       "git add"
     ]
   }
