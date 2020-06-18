@@ -1,7 +1,7 @@
 {
   "private": true,
-  "name": "boilerplate_vuex-dev",
-  "version": "2.1.0",
+  "name": "web-dev-boilerplate_vue",
+  "version": "2.2.0",
   "description": "web development env boilerplate with Vue.js",
   "license": "MIT",
   "scripts": {
