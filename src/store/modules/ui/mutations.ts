@@ -17,32 +17,32 @@ export const mutations: MutationTree<ThisState> = {
    */
   [DECREMENT_GLOBAL_LOADING_QUEUE](
     state,
-    length: ThisMutationPayloads[typeof DECREMENT_GLOBAL_LOADING_QUEUE] = 1
+    payload: ThisMutationPayloads[typeof DECREMENT_GLOBAL_LOADING_QUEUE] = 1
   ) {
-    if (length <= 0) {
+    if (payload <= 0) {
       return
     }
 
     state.globalLadingQueue = Math.max(
       0,
-      state.globalLadingQueue - Math.ceil(length)
+      state.globalLadingQueue - Math.ceil(payload)
     )
   },
 
   /**
    * グローバルのローディングキューを増加させる
    * @param state
-   * @param length
+   * @param payload
    */
   [INCREMENT_GLOBAL_LOADING_QUEUE](
     state,
-    length: ThisMutationPayloads[typeof INCREMENT_GLOBAL_LOADING_QUEUE] = 1
+    payload: ThisMutationPayloads[typeof INCREMENT_GLOBAL_LOADING_QUEUE] = 1
   ) {
-    if (length <= 0) {
+    if (payload <= 0) {
       return
     }
 
-    state.globalLadingQueue = state.globalLadingQueue + Math.ceil(length)
+    state.globalLadingQueue = state.globalLadingQueue + Math.ceil(payload)
   },
 
   /**

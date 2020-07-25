@@ -14,25 +14,25 @@ export const actions: ActionTree<ThisState, RootState> = {
   /**
    * グローバルのローディングキューを減少させる
    * @param commit
-   * @param length
+   * @param payload
    */
   decrementGlobalLoadingQueue(
     { commit },
-    length?: ThisActionPayloads['decrementGlobalLoadingQueue']
+    payload?: ThisActionPayloads['decrementGlobalLoadingQueue']
   ) {
-    commit(DECREMENT_GLOBAL_LOADING_QUEUE, length)
+    commit(DECREMENT_GLOBAL_LOADING_QUEUE, payload)
   },
 
   /**
    * グローバルのローディングキューを増加させる
    * @param commit
-   * @param length
+   * @param payload
    */
   incrementGlobalLoadingQueue(
     { commit },
-    length?: ThisActionPayloads['incrementGlobalLoadingQueue']
+    payload?: ThisActionPayloads['incrementGlobalLoadingQueue']
   ) {
-    commit(INCREMENT_GLOBAL_LOADING_QUEUE, length)
+    commit(INCREMENT_GLOBAL_LOADING_QUEUE, payload)
   },
 
   /**
