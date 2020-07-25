@@ -5,7 +5,7 @@ import {
 import {
   DECREMENT_GLOBAL_LOADING_QUEUE,
   INCREMENT_GLOBAL_LOADING_QUEUE,
-  TOGGLE_DARK_MODE
+  UPDATE_DARK_MODE
 } from './mutation-types'
 import { MutationTree } from 'vuex'
 
@@ -46,10 +46,13 @@ export const mutations: MutationTree<ThisState> = {
   },
 
   /**
-   * ダークモードをトグルする
+   * ダークモードを更新する
    * @param state
    */
-  [TOGGLE_DARK_MODE](state) {
-    state.dark = !state.dark
+  [UPDATE_DARK_MODE](
+    state,
+    payload: ThisMutationPayloads[typeof UPDATE_DARK_MODE]
+  ) {
+    state.dark = payload
   }
 }

@@ -1,21 +1,36 @@
 <template>
-  <div class="ThemeSwitcher">
-    <input
-      id="ThemeSwitcherInput"
-      v-model="ui.dark"
-      class="__input"
-      type="checkbox"
-      name="darkMode"
-      @change="toggleDarkMode"
-    />
-    <label class="__label" for="ThemeSwitcherInput">
-      ダークモードにする
-    </label>
+  <div class="ThemeSwitcher" @change="handleChange">
+    <div class="__inner">
+      <input
+        id="ThemeSwitcherLight"
+        class="__input"
+        name="switch"
+        type="radio"
+        value="0"
+        :checked="!ui.dark"
+      />
+      <label class="__label" for="ThemeSwitcherLight">
+        ライトモード
+      </label>
+    </div>
+    <div class="__inner">
+      <input
+        id="ThemeSwitcherDark"
+        class="__input"
+        name="switch"
+        type="radio"
+        value="1"
+        :checked="ui.dark"
+      />
+      <label class="__label" for="ThemeSwitcherDark">
+        ダークモード
+      </label>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { UiActionPayloads, UiViewModel } from '@/store/modules/ui/models'
+import { UiActions, UiViewModel } from '@/store/modules/ui/models'
 import { Component, Vue } from 'vue-property-decorator'
 import { Action, Getter } from 'vuex-class'
 
@@ -29,8 +44,15 @@ export default class ThemeSwitcher extends Vue {
   /**
    * アクションを引き当てる
    */
-  @Action('ui/toggleDarkMode')
-  toggleDarkMode!: UiActionPayloads['toggleDarkMode']
+  @Action('ui/updateDarkMode')
+  updateDarkMode!: UiActions['updateDarkMode']
+
+  /**
+   * @listens
+   */
+  handleChange(ev: Event) {
+    this.updateDarkMode(!!Number((ev.target as HTMLInputElement).value))
+  }
 }
 </script>
 
@@ -38,10 +60,12 @@ export default class ThemeSwitcher extends Vue {
 @import '../assets/styles/configs'
 
 .ThemeSwitcher
-  display: flex
-  align-items: center
   padding: var(--spaceGap)
   font-size: 1rem
+
+  .__inner
+    display: flex
+    align-items: center
 
   .__input
     margin: 0

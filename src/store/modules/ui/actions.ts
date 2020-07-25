@@ -6,7 +6,7 @@ import {
 import {
   DECREMENT_GLOBAL_LOADING_QUEUE,
   INCREMENT_GLOBAL_LOADING_QUEUE,
-  TOGGLE_DARK_MODE
+  UPDATE_DARK_MODE
 } from './mutation-types'
 import { ActionTree } from 'vuex'
 
@@ -39,7 +39,7 @@ export const actions: ActionTree<ThisState, RootState> = {
    * ダークモードをトグルする
    * @param commit
    */
-  toggleDarkMode({ commit }) {
-    commit(TOGGLE_DARK_MODE)
+  updateDarkMode({ commit }, payload?: ThisActionPayloads['updateDarkMode']) {
+    commit(UPDATE_DARK_MODE, payload)
   }
 }
